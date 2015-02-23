@@ -1,0 +1,10 @@
+*.DS_Store
+
+ignored/
+
+node_modules
+npm-debug.log
+
+tmp/
+
+Gemfile.lock

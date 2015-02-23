@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cine.io peer example</title>
+    <style type="text/css">
+      video{width: 300px;}
+      #myVideo, #otherVideos, #messageWrapper{display: inline-block;}
+    </style>
+
+    <!-- include the cine.io library -->
+    <script src="https://cdn.cine.io/cineio-peer.js"></script>
+
+    <script type="text/javascript">
+      if (window.location.protocol === 'file:'){
+        alert("cine.io peer client cannot run under the \"file\" protocol. Please serve index.html from a web server")
+      }
+    </script>
+    <script type="text/javascript">
+      (function(){
+        // setup cine.io
+        var PUBLIC_KEY = "YOUR_CINEIO_PUBLIC_KEY";
+        var ROOM_NAME = 'example';
+
+        if (PUBLIC_KEY === 'YOUR_CINEIO_PUBLIC_KEY'){
+          return alert('please replace the cine.io publicKey variable with your public key.');
+        }
+        CineIOPeer.init(PUBLIC_KEY);
+        // start the camera and microphone automatically
+        CineIOPeer.startCameraAndMicrophone();
+
+        // join a room right away
+        CineIOPeer.join(ROOM_NAME);
+
+        // The user rejected the permission to access camera/microphone
+        CineIOPeer.on('media-rejected', function(data) {
+          alert("Media rejected");
+        });
+
+        // when local or remote media is added
+        CineIOPeer.on('media-added', function(data) {
+          var videoDOMNode = data.videoElement, domId;
+          if (data.local) {
+            // local video
+            domId = 'myVideo';
+          } else {
+            // remote video
+            domId = 'otherVideos';
+          }
+          document.getElementById(domId).appendChild(videoDOMNode);
+        });
+
+        // when local or remote media is removed
+        CineIOPeer.on('media-removed', function(data) {
+          var videoDOMNode = data.videoElement;
+          videoDOMNode.remove()
+        });
+
+
+        // Process raw json data sent between peers
+        CineIOPeer.on('peer-data', function(data) {
+          updateMessage(data)
+        });
+
+        function updateMessage(data){
+          var element = document.createElement("LI");
+          element.innerText = JSON.stringify(data);
+          document.getElementById('messages').appendChild(element);
+        }
+
+        // Error handler
+        CineIOPeer.on('error', function(err) {
+          if (typeof(err.support) != "undefined" && !err.support) {
+            alert("This browser does not support WebRTC.")
+          } else if (err.msg) {
+            alert(err.msg)
+          }
+        });
+
+        // the form to send data
+        window.sendData = function(event){
+          event.preventDefault();
+          var input = document.getElementById('input');
+
+          // This can take anything that JSON.stringify can handle
+          CineIOPeer.sendDataToAll(input.value);
+
+          updateMessage(input.value);
+          input.value = '';
+          return false;
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id='myVideo'></div>
+    <div id='otherVideos'></div>
+    <div id="messageWrapper">
+      <form id="messageForm" action="" onsubmit="sendData(event)">
+        <input type="text" id="input" placeholder="Data to send" />
+        <input type="submit" value="Send" />
+      </form>
+      <ul id='messages'></ul>
+    </div>
+  </body>
+</html>

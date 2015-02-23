@@ -1,0 +1,21 @@
+{
+  "author": "Cine.io Team",
+  "name": "cine.io-html-peer-example",
+  "domains": [
+    "cine.io"
+  ],
+  "version": "0.0.1",
+  "description": "cine.io html peer example",
+  "scripts": {},
+  "repository": "https://github.com/cine-io/cineio-peer-html-example-app",
+  "dependencies": {
+    "connect": "3.3.4",
+    "serve-static": "1.9.1"
+  },
+  "devDependencies": {},
+  "license": "Copyrighted / All Rights Reserved",
+  "engines": {
+    "node": "0.10.x"
+  },
+  "private": true
+}
