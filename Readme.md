@@ -1,6 +1,6 @@
 # Cine.io peer html example
 
-This is an example application in just html showing the capabilities of [cine.io peer][cineio-peer]. In this example you can video and text chat with users in a room. It uses the [cine.io Peer JS SDK][cineio-peer-js-sdk].
+This is an example application in just html showing the capabilities of [cine.io peer][cineio-peer]. In this example you can video, audio, and text chat with users in a room. It uses the [cine.io Peer JS SDK][cineio-peer-js-sdk].
 
 ## How to run Locally
 
