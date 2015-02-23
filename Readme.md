@@ -4,7 +4,7 @@ This is an example application in just html showing the capabilities of [cine.io
 
 ## How to run Locally
 
-1. Update `PUBLIC_KEY` in `index.html`
+1. Update `PUBLIC_KEY` in [index.html][index-public-key]
 2. Run via a webserver
   * Ruby:
 
@@ -20,3 +20,4 @@ This is an example application in just html showing the capabilities of [cine.io
 <!-- external links -->
 [cineio-peer]:https://www.cine.io/products/peer
 [cineio-peer-js-sdk]:https://github.com/cine-io/peer-js-sdk
+[index-public-key]:index.html#L21
