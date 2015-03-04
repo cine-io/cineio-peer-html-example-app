@@ -4,8 +4,15 @@ This is an example application in just html showing the capabilities of [cine.io
 
 ## How to run Locally
 
-1. Update `PUBLIC_KEY` in [index.html][index-public-key]
-2. Run via a webserver
+1. Clone to your local machine:
+
+  ```
+  git clone git@github.com:cine-io/cineio-peer-html-example-app.git
+  cd cineio-peer-html-example-app
+  ```
+* Register for a public and secret key at [cine.io][cine-io]
+* Update `PUBLIC_KEY` in [index.html][index-public-key]
+* Run via a webserver
   * Ruby:
 
     ```shell
@@ -20,6 +27,7 @@ This is an example application in just html showing the capabilities of [cine.io
 >This example intentionally does not support [calling][calling]. [Identifying a user][identifying] requires a webserver that holds a secret key and can generate sha1 hash. This can be done by the [ruby][cineio-ruby-identify], [node][cineio-node-identify], or [python][cineio-python-identify] library for you.
 
 <!-- external links -->
+[cine-io]:https://www.cine.io/
 [cineio-peer]:https://www.cine.io/products/peer
 [cineio-peer-js-sdk]:https://github.com/cine-io/peer-js-sdk
 [index-public-key]:index.html#L21
