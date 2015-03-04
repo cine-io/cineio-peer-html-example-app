@@ -23,6 +23,7 @@ This is an example application in just html showing the capabilities of [cine.io
     ```shell
     npm install && node index.js
     ```
+* The app automatically connects to cine.io, starts the camera, and puts you in a room called `example`.
 
 >This example intentionally does not support [calling][calling]. [Identifying a user][identifying] requires a webserver that holds a secret key and can generate sha1 hash. This can be done by the [ruby][cineio-ruby-identify], [node][cineio-node-identify], or [python][cineio-python-identify] library for you.
 
